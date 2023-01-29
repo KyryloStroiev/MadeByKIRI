@@ -1,0 +1,69 @@
+﻿@model List<Buyers>
+
+@{
+	ViewData["Title"] = "Show Buyers";
+}
+<p><h1>Каталог Покупців</h1></p>
+<a asp-controller="Admin" asp-action="CreateBuyers">
+        <button class="btn btn-success">Додати покупця</button>
+    </a>
+<div class="text-center">
+    
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">№</th>
+                <th scope="col">Ім'я'</th>
+                <th scope="col">Email</th>
+                <th scope="col">Телефон</th>
+                <th scope="col">Пароль</th>
+               
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var buyer in Model)
+            {
+                <tr>
+                    <th>@buyer.IDBuyers</th>
+                    <td>@buyer.FullName</td>
+                    <td>@buyer.Email</td>
+                    <td>@buyer.Phone</td>
+                    <td>@buyer.Password</td>
+
+                    <td>
+                        <a asp-controller="admin" asp-action="EditBuyer"
+                       asp-route-Id="@buyer.IDBuyers">
+                            Змінити
+                        </a>
+                        <a asp-action="DeleteBuyer"
+                          asp-route-goodsid="@buyer.IDBuyers" 
+                          onclick=@($"return confirm('Ви дійсно хочете видалити{buyer.FullName}?')")>
+                            Видалити
+                        </a>
+                    
+                    </td>
+
+                </tr>
+            }
+       
+        </tbody>
+    </table>
+</div>
+<table>
+    <thead>
+        <tr>
+            <th>
+                <a asp-controller="Admin" asp-action="ShowGoods">
+                    <button class="btn btn-success">Товари</button>
+                </a>
+            </th>
+            <th>
+                <a asp-controller="Admin" asp-action="Admin">
+                    <button type="submit" class="btn btn-success">Назад</button>
+                </a>
+            </th>
+
+        </tr>
+    </thead>
+</table>

@@ -1,0 +1,76 @@
+﻿@model Goods
+@{
+	ViewData["Title"] = $"Edit {Model.NameGoods}";
+	var files = Directory
+					.EnumerateFiles($"{BasePath}/images/goods/", "*.*", SearchOption.TopDirectoryOnly)
+					.Where(s => s.Split("/").Last().Split("-").First().Equals($"{Model.GoodsId}"))
+					.Select(s => s.Split("/").Last())
+					.OrderBy(s => s).ToList();
+}
+
+<div class="col-md-6 m-auto">
+
+	<form asp-controller="Admin" asp-action="EditGoods" method="post", enctype="multipart/form-data">
+		<div class="mb-3">
+			<label class="form-label">Id</label>
+			<input asp-for="GoodsId" class="form-control" />
+		</div>		
+		<div class="mb-3">
+			<label class="form-label">Name</label>
+			<input asp-for="NameGoods" class="form-control" />
+		</div>
+		<div class="mb-3">
+			<label class="form-label">Аrticle</label>
+			<input asp-for="Article" class="form-control" />
+		</div>
+		<div class="mb-3">
+			<label class="form-label">Price</label>
+			<input asp-for="Price" class="form-control" />
+		</div>
+		<div class="mb-3">
+			<label class="form-label">Quantity</label>
+			<input asp-for="Quantity" class="form-control" />
+		</div>
+		<div class="mb-3">
+			<label class="form-label">Info</label>
+			<input asp-for="Info" class="form-control" />
+		</div>
+		<div class="mb-3">
+
+			<label for="img" class="form-label">Choose photo...</label>
+			<input class="form-control" name="img" type="file" id="img">
+		</div>
+
+		<button type="submit" class="btn btn-success">Edit</button>
+	
+		
+	</form>
+	@if(files.Any())
+	{
+		
+			<table class="table">
+				<thead>
+					<tr>
+						<td>Фото</td>
+						<td>Видалити</td>
+					</tr>
+				</thead>
+				<tbody>
+					@foreach(var file in files)
+				{
+					<tr>
+						<td>@file</td>
+						<td>
+							<a asp-controller="admin" asp-action="DeleteFile" asp-route-filePath="@file" 
+							onclick=@($"return confirm('Ви дійсно хочете видалити фото {file}?')")>
+								Видалити
+							</a>
+						</td>
+					</tr>
+				}
+			</tbody>
+			</table>
+		
+	}
+	
+</div>

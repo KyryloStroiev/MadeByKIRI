@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33205.214
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MadeByKIRI", "MadeBuKIRI\MadeByKIRI.csproj", "{2F2DD330-3435-4D1F-9949-1E291BFA6EC8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MadeByKIRI.Domain", "MadeByKIRI.Domain\MadeByKIRI.Domain.csproj", "{6A73541B-3B2F-4D61-9EBC-96B02B53CC37}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2F2DD330-3435-4D1F-9949-1E291BFA6EC8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F2DD330-3435-4D1F-9949-1E291BFA6EC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F2DD330-3435-4D1F-9949-1E291BFA6EC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F2DD330-3435-4D1F-9949-1E291BFA6EC8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A73541B-3B2F-4D61-9EBC-96B02B53CC37}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A73541B-3B2F-4D61-9EBC-96B02B53CC37}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A73541B-3B2F-4D61-9EBC-96B02B53CC37}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A73541B-3B2F-4D61-9EBC-96B02B53CC37}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9DF099E2-7B0D-46AB-82A3-9DE49886D7FB}
+	EndGlobalSection
+EndGlobal

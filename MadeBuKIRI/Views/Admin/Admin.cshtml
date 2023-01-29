@@ -1,0 +1,57 @@
+﻿@model List<Order>
+@{
+    ViewData["Title"] = "Admin";
+}
+
+<div class="text-center">
+    <table>
+        <thead>
+            <tr>
+                <th>
+                    <a asp-controller="Admin" asp-action="ShowGoods">
+                        <button class="btn btn-success">Товари</button>
+                    </a>
+                </th>
+                <th>
+                    <a asp-controller="Admin" asp-action="ShowBuyer">
+                        <button type="submit" class="btn btn-success">Покупці</button>
+                    </a>
+                </th>
+   
+            </tr>
+        </thead>
+    </table>
+   <p><h2>ЗАКАЗИ</h2></p>
+    <br />
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">№</th>
+                <th scope="col">Дата продажи</th>
+                <th scope="col">Товар</th>
+                <th scope="col">Артикул</th>
+                <th scope="col">Ціна</th>
+                <th scope="col">Покупець</th>
+                <th scope="col">Email</th>
+                <th scope="col">Телефон</th>
+                <th scope="col">Адреса доставки</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var order in Model)
+            {
+                <tr>
+                    <th>@order.OrderId</th>
+                    <th>@order.DateOrder.ToString("dd.MM.yyyy")</th>
+                    <td>@order.Goods.NameGoods == @order.Buyers.FullName</td>
+                    <td>@order.Goods.Article</td>
+                    <td>@order.Goods.Price</td>
+                    <th>@order.Buyers.FullName</th>
+                    <th>@order.Buyers.Email</th>
+                    <th>@order.Buyers.Phone</th>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+  

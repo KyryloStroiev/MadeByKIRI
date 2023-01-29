@@ -1,0 +1,22 @@
+﻿@model List<Goods>
+@{
+    ViewData["Title"] = "Bags";
+}
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    @foreach (var goods in Model.Where(goods => goods.Article.Contains("K5")))
+    {
+
+        <div class="col">
+            <a asp-controller="home" asp-action="cardgoods"
+           asp-route-Id="@goods.GoodsId">
+                <img src="@($"/images/goods/{goods.GoodsId}-1.jpg")" class="card-img-top" alt="...">
+
+                <div class="card-body">
+                    <h5 class="card-title">@goods.NameGoods</h5>
+                    <p class="card-text">@goods.Article</p>
+                    <p class="card-text">@goods.Price</p>
+                </div>
+            </a>
+        </div>
+    }
+</div>

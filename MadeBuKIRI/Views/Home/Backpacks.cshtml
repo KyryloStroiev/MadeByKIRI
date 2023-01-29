@@ -1,0 +1,44 @@
+﻿@model Goods
+
+ 
+
+<div class="well">
+    <h3>
+        <strong>@Model.NameGoods</strong>
+        <span class="pull-right label label-primary">@Model.Price.ToString("# грн")</span>
+    </h3>
+    @using (Html.BeginForm("AddToCart", "Cart"))
+    {
+        <div class="pull-right">
+            @Html.HiddenFor(x => x.GoodsId)
+            @Html.Hidden("returnUrl")
+            <input type="submit" class="btn btn-success" value="Добавить в корзину" />
+        </div>
+    }
+    <span class="lead">@Model.Info</span>
+</div>
+@*@{
+    ViewData["Title"] = "Backpacks";
+}
+<h1>@ViewData["Title"]</h1>
+
+<p>BACKPACKS made to order</p>
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    @foreach (var goods in Model.Where(goods => goods.Article.Contains("K6")))
+    {
+
+        <div class="col">
+            <a asp-controller="home" asp-action="cardgoods"
+           asp-route-Id="@goods.GoodsId">
+                <img src="@($"/images/goods/{goods.GoodsId}-1.jpg")" class="card-img-top" alt="...">
+
+                <div class="card-body">
+                    <h5 class="card-title">@goods.NameGoods</h5>
+                    <p class="card-text">@goods.Article</p>
+                    <p class="card-text">@goods.Price</p>
+                </div>
+            </a>
+        </div>
+    }
+</div>
+*@
