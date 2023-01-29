@@ -5,6 +5,14 @@ var builder = WebApplication.CreateBuilder(args);
 BasePath = builder.Environment.WebRootPath;
 builder.Logging.SetMinimumLevel(LogLevel.Debug);
 builder.Services.AddControllersWithViews();
+builder.Services.AddDistributedMemoryCache();
+
+builder.Services.AddSession(options =>
+{
+	options.IdleTimeout = TimeSpan.FromSeconds(10);
+	options.Cookie.HttpOnly = true;
+	options.Cookie.IsEssential = true;
+});
 builder.Services.AddDbContext<NewDbContext>(options =>
 options.UseSqlServer(Setting.ConnectionString));
 builder.Services.AddScoped<GoodsRepository>();
@@ -34,7 +42,7 @@ app.UseStaticFiles();
 app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
-
+app.UseSession();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Home}/{id?}");
