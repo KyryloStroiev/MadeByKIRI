@@ -6,30 +6,34 @@
 <div class="col-md-6 m-auto">
 
     <form asp-controller="Admin" asp-action="CreateGoods">
-        <div class="mb-3">
+      @*  <div class="mb-3">
             <label class="form-label">Id</label>
             <input asp-for="GoodsId" class="form-control" />
-        </div>
+        </div>*@
         <div class="mb-3">
-            <label class="form-label">Name</label>
+            <label class="form-label">Назва</label>
             <input asp-for="NameGoods" class="form-control" />
         </div>
         <div class="mb-3">
-            <label class="form-label">Аrticle</label>
+            <label class="form-label">Артикул</label>
             <input asp-for="Article" class="form-control" />
         </div>
         <div class="mb-3">
-            <label class="form-label">Price</label>
+            <label class="form-label">Ціна</label>
             <input asp-for="Price" class="form-control" />
         </div>
+        @*<div class="mb-3">
+            <label class="form-label">Наявність</label>
+            <input asp-for="Available" class="form-control" />
+        </div>*@
         <div class="mb-3">
-            <label class="form-label">Quantity</label>
-            <input asp-for="Quantity" class="form-control" />
-        </div>
-        <div class="mb-3">
-            <label class="form-label">Info</label>
+            <label class="form-label">Опис</label>
             <input asp-for="Info" class="form-control" />
         </div>
+        @*<div class="mb-3">
+            <label class="form-label">На головну сторінку</label>
+            <input asp-for="isFavourite" class="form-control" />
+        </div>*@
         <div class="mb-3">
             <label for="img" class="form-label">Choose photo...</label>
             <input class="form-control" name="img" type="file" id="img">
