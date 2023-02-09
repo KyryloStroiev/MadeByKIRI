@@ -10,11 +10,11 @@
 
 <div class="col-md-6 m-auto">
 
-	<form asp-controller="Admin" asp-action="EditGoods" method="post", enctype="multipart/form-data">
+	<form asp-controller="Admin" asp-action="EditGoods" method="post" , enctype="multipart/form-data">
 		<div class="mb-3">
 			<label class="form-label">Id</label>
 			<input asp-for="GoodsId" class="form-control" />
-		</div>		
+		</div>
 		<div class="mb-3">
 			<label class="form-label">Name</label>
 			<input asp-for="NameGoods" class="form-control" />
@@ -28,10 +28,6 @@
 			<input asp-for="Price" class="form-control" />
 		</div>
 		<div class="mb-3">
-			<label class="form-label">Quantity</label>
-			<input asp-for="Quantity" class="form-control" />
-		</div>
-		<div class="mb-3">
 			<label class="form-label">Info</label>
 			<input asp-for="Info" class="form-control" />
 		</div>
@@ -42,35 +38,35 @@
 		</div>
 
 		<button type="submit" class="btn btn-success">Edit</button>
-	
-		
+
+
 	</form>
-	@if(files.Any())
+	@if (files.Any())
 	{
-		
-			<table class="table">
-				<thead>
-					<tr>
-						<td>Фото</td>
-						<td>Видалити</td>
-					</tr>
-				</thead>
-				<tbody>
-					@foreach(var file in files)
+
+		<table class="table">
+			<thead>
+				<tr>
+					<td>Фото</td>
+					<td>Видалити</td>
+				</tr>
+			</thead>
+			<tbody>
+				@foreach (var file in files)
 				{
 					<tr>
 						<td>@file</td>
 						<td>
-							<a asp-controller="admin" asp-action="DeleteFile" asp-route-filePath="@file" 
-							onclick=@($"return confirm('Ви дійсно хочете видалити фото {file}?')")>
+							<a asp-controller="admin" asp-action="DeleteFile" asp-route-filePath="@file"
+					   onclick=@($"return confirm('Ви дійсно хочете видалити фото {file}?')")>
 								Видалити
 							</a>
 						</td>
 					</tr>
 				}
 			</tbody>
-			</table>
-		
+		</table>
+
 	}
-	
+
 </div>
