@@ -18,8 +18,10 @@
                 <th scope="col">Назва</th>
                 <th scope="col">Артикул</th>
                 <th scope="col">Ціна</th>
-                <th scope="col">Залишок</th>
+                <th scope="col">Наявність</th>
                 <th scope="col">Опис</th>
+                <th scope="col">На головну</th>
+                <th scope="col">Редагування</th>
             </tr>
         </thead>
         <tbody>
@@ -34,14 +36,9 @@
                     <td>@goods.NameGoods</td>
                     <td>@goods.Article</td>
                     <td>@goods.Price</td>
-                    <td>@goods.Quantity</td>
-                    <td>
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                            Опис
-                        </button>
-                    </td>
-                    
-                  
+                    <td>@goods.Article</td>
+                    <td>@goods.Info</td>
+                    <tb>@goods.isFavourite</tb>
                     <td>
                         <a asp-controller="admin" asp-action="EditGoods"
                        asp-route-Id="@goods.GoodsId">
@@ -49,7 +46,7 @@
                         </a>
                         <a asp-controller="home" asp-action="cardgoods"
                        asp-route-Id="@goods.GoodsId">
-                            Viuew
+                            Переглянути
                         </a>
                         <a  asp-action="DeleteGoods"
                        asp-route-goodsid="@goods.GoodsId" 
@@ -83,31 +80,3 @@
         </tr>
     </thead>
 </table>
-
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                @foreach (var goods in Model)
-                {
-
-                    <tr>
-                        <th>@goods.GoodsId</th>
-                        <td>@goods.NameGoods</td>
-                        <td>@goods.Article</td>
-                        <td>@goods.Price</td>
-                        <td>@goods.Quantity</td>
-                        <td>@goods.Info</td>
-                    </tr>
-                }
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
