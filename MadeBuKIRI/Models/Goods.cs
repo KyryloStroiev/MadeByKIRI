@@ -2,10 +2,10 @@
 
 public class Goods : GoodsModel
 {
-    public int BuyerId { get; set; }
-    //public Buyers Buyers { get; set; }
-    public List<Order> Order { get; set; }
-    public Goods() { }
+	public virtual OrderDetail OrderDetail { get; set; }
+	public virtual ShopCartItem ShopCartItem { get; set; }
+
+	public Goods() { }
 
     public Goods (GoodsModel goodsmodel)
     {
@@ -13,7 +13,8 @@ public class Goods : GoodsModel
         NameGoods = goodsmodel.NameGoods;
         Article = goodsmodel.Article;
         Price = goodsmodel.Price;
-        Quantity = goodsmodel.Quantity;
+        Available = goodsmodel.Available;
+        isFavourite = goodsmodel.isFavourite;
         Info = goodsmodel.Info;
     }
    
