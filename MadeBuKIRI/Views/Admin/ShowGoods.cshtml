@@ -1,82 +1,93 @@
 ﻿@model List<Goods>
 
 @{
-    ViewData["Title"] = "Show Goods";
+	ViewData["Title"] = "Show Goods";
+
 }
 <p><h1>Каталог Товарів</h1></p>
 <a asp-controller="Admin" asp-action="CreateGoods">
-    <button class="btn btn-success">Додати товар</button>
+	<button class="btn btn-success">Додати товар</button>
 </a>
 
 <div class="text-center">
-    
-    <table class="table">
 
-        <thead>
-            <tr>
-                <th scope="col">№</th>
-                <th scope="col">Назва</th>
-                <th scope="col">Артикул</th>
-                <th scope="col">Ціна</th>
-                <th scope="col">Наявність</th>
-                <th scope="col">Опис</th>
-                <th scope="col">На головну</th>
-                <th scope="col">Редагування</th>
-            </tr>
-        </thead>
-        <tbody>
-          
-          
+	<table class="table">
 
-            @foreach (var goods in Model)
-            {
-              
-                <tr>
-                    <th>@goods.GoodsId</th>
-                    <td>@goods.NameGoods</td>
-                    <td>@goods.Article</td>
-                    <td>@goods.Price</td>
-                    <td>@goods.Article</td>
-                    <td>@goods.Info</td>
-                    <tb>@goods.isFavourite</tb>
-                    <td>
-                        <a asp-controller="admin" asp-action="EditGoods"
-                       asp-route-Id="@goods.GoodsId">
-                            Змінити
-                        </a>
-                        <a asp-controller="home" asp-action="cardgoods"
-                       asp-route-Id="@goods.GoodsId">
-                            Переглянути
-                        </a>
-                        <a  asp-action="DeleteGoods"
-                       asp-route-goodsid="@goods.GoodsId" 
-                       onclick=@($"return confirm('Ви дійсно хочете видалити{goods.NameGoods}: {goods.Article}?')")>
-                                Видалити
-                        </a>
-                      
-                        
-                    </td>
+		<thead>
+			<tr>
+				<th scope="col">№</th>
+				<th scope="col">Назва</th>
+				<th scope="col">Артикул</th>
+				<th scope="col">Ціна</th>
+				<th scope="col">Наявність</th>
+				<th scope="col">Опис</th>
+				<th scope="col">На головну</th>
+				<th scope="col">Редагування</th>
+			</tr>
+		</thead>
+		<tbody>
 
-                </tr>
-            }
 
-        </tbody>
-    </table>
+
+			@foreach (var goods in Model)
+			{
+
+				<tr>
+					<th>@goods.GoodsId</th>
+					<td>@goods.NameGoods</td>
+					<td>@goods.Article</td>
+					<td>@goods.Price</td>
+					<td>@goods.Article</td>
+					<td>@*@goods.Info*@ <button onclick="myFunction()">Опис</button></td>
+					<tb>@goods.isFavourite</tb>
+					<td>
+						<a asp-controller="admin" asp-action="EditGoods"
+					   asp-route-Id="@goods.GoodsId">
+							Змінити
+						</a>
+						<a asp-controller="home" asp-action="cardgoods"
+					   asp-route-Id="@goods.GoodsId">
+							Переглянути
+						</a>
+						<a asp-action="DeleteGoods"
+					   asp-route-goodsid="@goods.GoodsId"
+					   onclick=@($"return confirm('Ви дійсно хочете видалити{goods.NameGoods}: {goods.Article}?')")>
+							Видалити
+						</a>
+
+
+					</td>
+
+				</tr>
+
+			}
+
+		</tbody>
+	</table>
 </div>
 <table>
-    <thead>
-        <tr>
-            <th>
-                <a asp-controller="Admin" asp-action="ShowBuyer">
-                    <button class="btn btn-success">Покупці</button>
-                </a>
-            </th>
-            <th>
-                <a asp-controller="Admin" asp-action="Admin">
-                    <button type="submit" class="btn btn-success">Назад</button>
-                </a>
-            </th>
+	<thead>
+		<tr>
+			<th>
+				<a asp-controller="Admin" asp-action="ShowBuyer">
+					<button class="btn btn-success">Покупці</button>
+				</a>
+			</th>
+			<th>
+				<a asp-controller="Admin" asp-action="Admin">
+					<button type="submit" class="btn btn-success">Назад</button>
+				</a>
+			</th>
 
-        </tr>
-    </thead>
+		</tr>
+	</thead>
 </table>
+@foreach (var goods in Model)
+{
+	<script>
+
+		function myFunction() {
+			alert("@goods.Info")
+		}
+	</script>
+}
