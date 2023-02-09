@@ -1,12 +1,10 @@
-﻿@model List<Buyers>
+﻿@model List<Order>
 
 @{
 	ViewData["Title"] = "Show Buyers";
 }
 <p><h1>Каталог Покупців</h1></p>
-<a asp-controller="Admin" asp-action="CreateBuyers">
-        <button class="btn btn-success">Додати покупця</button>
-    </a>
+
 <div class="text-center">
     
     <table class="table">
@@ -14,9 +12,10 @@
             <tr>
                 <th scope="col">№</th>
                 <th scope="col">Ім'я'</th>
+                <th scope="col">Прізвище'</th>
                 <th scope="col">Email</th>
                 <th scope="col">Телефон</th>
-                <th scope="col">Пароль</th>
+                <th scope="col">Адреса</th>
                
             </tr>
         </thead>
@@ -25,20 +24,16 @@
             @foreach (var buyer in Model)
             {
                 <tr>
-                    <th>@buyer.IDBuyers</th>
-                    <td>@buyer.FullName</td>
+                    <th>@buyer.Id</th>
+                    <td>@buyer.Name</td>
+                    <td>@buyer.SurName</td>
                     <td>@buyer.Email</td>
                     <td>@buyer.Phone</td>
-                    <td>@buyer.Password</td>
-
+                    <td>@buyer.Adress</td>
                     <td>
-                        <a asp-controller="admin" asp-action="EditBuyer"
-                       asp-route-Id="@buyer.IDBuyers">
-                            Змінити
-                        </a>
                         <a asp-action="DeleteBuyer"
-                          asp-route-goodsid="@buyer.IDBuyers" 
-                          onclick=@($"return confirm('Ви дійсно хочете видалити{buyer.FullName}?')")>
+                          asp-route-goodsid="@buyer.Id" 
+                          onclick=@($"return confirm('Ви дійсно хочете видалити{buyer.SurName}?')")>
                             Видалити
                         </a>
                     
