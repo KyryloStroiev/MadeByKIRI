@@ -47,6 +47,7 @@
 							<li class="nav-item">
 								<a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Contacts">Contacts</a>
 							</li>
+					
 							@if (User.Identity is { IsAuthenticated: false })
 							{
 								<li class="nav-item">
@@ -64,6 +65,11 @@
 									<a class="nav-link text-dark" asp-controller="Admin" asp-action="Logout"> LogOut</a>
 								</li>
 							}
+							</li>
+							<li class="nav-item">
+								<a class="nav-link text-dark" asp-controller="ShopCart" asp-action="Index">
+									<img src="~/images/2956820.png" alt="Bootstrap" width="30" height="30"></a>
+							</li>
 							
 
 							
@@ -83,7 +89,6 @@
 	<footer class="border-top footer text-muted">
 		<div class="container">
 			&copy; 2018 KIRI
-			@*<a asp-area="" asp-controller="Home" asp-action="Index">Admin</a>*@
 			<a class="navbar-brand" href="https://www.instagram.com/kiri__ua">
 				<img src="~/images/InstagramLogo.png" alt="Bootstrap" width="18" height="18">
 			</a>
