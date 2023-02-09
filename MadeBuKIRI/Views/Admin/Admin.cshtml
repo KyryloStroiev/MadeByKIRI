@@ -1,4 +1,4 @@
-﻿@model List<Order>
+﻿@model List<OrderDetail>
 @{
     ViewData["Title"] = "Admin";
 }
@@ -21,7 +21,7 @@
             </tr>
         </thead>
     </table>
-   <p><h2>ЗАКАЗИ</h2></p>
+   <p><h2>Замовленя</h2></p>
     <br />
     <table class="table">
         <thead>
@@ -31,7 +31,8 @@
                 <th scope="col">Товар</th>
                 <th scope="col">Артикул</th>
                 <th scope="col">Ціна</th>
-                <th scope="col">Покупець</th>
+                <th scope="col">Ім'я Покупця</th>
+                <th scope="col">Прізвище Покупця</th>
                 <th scope="col">Email</th>
                 <th scope="col">Телефон</th>
                 <th scope="col">Адреса доставки</th>
@@ -41,14 +42,24 @@
             @foreach (var order in Model)
             {
                 <tr>
-                    <th>@order.OrderId</th>
-                    <th>@order.DateOrder.ToString("dd.MM.yyyy")</th>
-                    <td>@order.Goods.NameGoods == @order.Buyers.FullName</td>
+                    <th>@order.Id</th>
+                    <th>@order.Order.OrderTime</th>
+                    <td>@order.Goods.NameGoods</td>
                     <td>@order.Goods.Article</td>
-                    <td>@order.Goods.Price</td>
-                    <th>@order.Buyers.FullName</th>
-                    <th>@order.Buyers.Email</th>
-                    <th>@order.Buyers.Phone</th>
+                    <td>@order.Goods.Price.ToString("c")</td>
+                    <th>@order.Order.Name</th>
+                    <th>@order.Order.SurName</th>
+                    <th>@order.Order.Email</th>
+                    <th>@order.Order.Phone</th>
+                    <th>@order.Order.Adress</th>
+                    <th>
+                        <a asp-controller="Order" asp-action="DeleteOrder"
+                       asp-route-orderid="@order.Id"
+                       onclick=@($"return confirm('Ви дійсно хочете видалити{order.Id}: {order.Goods.Article}?')")>
+                            Видалити
+                        </a>
+                    </th>
+                  
                 </tr>
             }
         </tbody>
