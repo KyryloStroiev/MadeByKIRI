@@ -1,0 +1,22 @@
+﻿@using MadeByKIRI.ViewModel
+@model ShopCartViewModel
+
+<div class="container">
+	@foreach (var goods in Model.shopCart.ListShopItem)
+	{
+		<div class="alert alert-white mt-3">
+			<a asp-controller="ShopCart" asp-action="DeleteGoods"
+		   asp-route-goodsid="@goods.Goods.GoodsId"
+		   onclick=@($"return confirm('Ви дійсно хочете видалити{goods.Goods.NameGoods}?')")>
+				<button type="button" class="btn-close" aria-label="Close"></button>
+			</a><br>
+			<b>Goods:</b>@goods.Goods.NameGoods<br>
+			<b>Article:</b>@goods.Goods.Article<br>
+			<b>Price:</b> @goods.Price.ToString("c")<br>
+			
+		</div>
+	}
+	<hr/>
+	<a type="button" class="btn btn-outline-dark" asp-controller="Order" asp-action="CheckOut">Pay</a>
+</div>
+
