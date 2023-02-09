@@ -1,23 +1,5 @@
-﻿@model Goods
-
- 
-
-<div class="well">
-    <h3>
-        <strong>@Model.NameGoods</strong>
-        <span class="pull-right label label-primary">@Model.Price.ToString("# грн")</span>
-    </h3>
-    @using (Html.BeginForm("AddToCart", "Cart"))
-    {
-        <div class="pull-right">
-            @Html.HiddenFor(x => x.GoodsId)
-            @Html.Hidden("returnUrl")
-            <input type="submit" class="btn btn-success" value="Добавить в корзину" />
-        </div>
-    }
-    <span class="lead">@Model.Info</span>
-</div>
-@*@{
+﻿@model List<Goods>
+@{
     ViewData["Title"] = "Backpacks";
 }
 <h1>@ViewData["Title"]</h1>
@@ -35,10 +17,11 @@
                 <div class="card-body">
                     <h5 class="card-title">@goods.NameGoods</h5>
                     <p class="card-text">@goods.Article</p>
-                    <p class="card-text">@goods.Price</p>
+                    <p class="card-text">@goods.Price.ToString("c")</p>
+                    <a class="btn btn-outline-dark" asp-controller="ShopCart" asp-action="AddToCarts"
+                   asp-route-goodsId="@goods.GoodsId"> Add to Cart</a>
                 </div>
             </a>
         </div>
     }
 </div>
-*@
