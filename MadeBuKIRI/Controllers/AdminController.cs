@@ -9,9 +9,9 @@ public class AdminController : Controller
 
 		 public List<Login> MockUsers = new()
 	     {
-		    new Login { Id = 1, UserName = "User", Password = "1111", Role = "Admin" },
-		    new Login { Id = 2, UserName = "user2", Password = "pass2", Role = "Support" },
-		    new Login { Id = 3, UserName = "user3", Password = "pass3", Role = "Otherrole" }
+		    new Login { Id = 1, UserName = "Kyrylo", Password = "110590", Role = "Admin" },
+		    new Login { Id = 2, UserName = "User", Password = "1111", Role = "Support" }
+		     
 	     };
 
 		public AdminController(ILogger<AdminController> logger, NewDbContext context, 
