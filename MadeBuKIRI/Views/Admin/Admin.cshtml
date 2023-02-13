@@ -51,13 +51,22 @@
                     <th>@order.Order.SurName</th>
                     <th>@order.Order.Email</th>
                     <th>@order.Order.Phone</th>
-                    <th>@order.Order.Adress</th>
+                    <th><a asp-action="Admin" onclick=@($"return alert('{order.Order.Adress}')")>
+                        Показати</a></th>
                     <th>
-                        <a asp-controller="Order" asp-action="DeleteOrder"
-                       asp-route-orderid="@order.Id"
-                       onclick=@($"return confirm('Ви дійсно хочете видалити{order.Id}: {order.Goods.Article}?')")>
-                            Видалити
-                        </a>
+                        @if (User.Identity is { IsAuthenticated: true })
+                        {
+                            @if (User.IsInRole("Admin"))
+                            {
+                                <a asp-controller="Order" asp-action="DeleteOrder"
+                                 asp-route-orderid="@order.Id"
+                                 onclick=@($"return confirm('Ви дійсно хочете видалити{order.Id}: {order.Goods.Article}?')")>
+                                    Видалити
+                                </a>
+
+                            }
+                        }
+                     
                     </th>
                   
                 </tr>
