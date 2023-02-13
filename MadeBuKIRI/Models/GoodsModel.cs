@@ -10,6 +10,6 @@ public class GoodsModel
     public int Price { get; set; }
     public string? Info { get; set; }
 	public bool  Available { get; set; }
-    public bool isFavourite { get; set; }
+ 
 
 }
