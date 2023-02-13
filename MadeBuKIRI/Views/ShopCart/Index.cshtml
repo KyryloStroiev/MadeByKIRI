@@ -7,13 +7,12 @@
 		<div class="alert alert-white mt-3">
 			<a asp-controller="ShopCart" asp-action="DeleteGoods"
 		   asp-route-goodsid="@goods.Goods.GoodsId"
-		   onclick=@($"return confirm('Ви дійсно хочете видалити{goods.Goods.NameGoods}?')")>
+		   onclick=@($"return confirm('Are you sure?')")>
 				<button type="button" class="btn-close" aria-label="Close"></button>
 			</a><br>
 			<b>Goods:</b>@goods.Goods.NameGoods<br>
 			<b>Article:</b>@goods.Goods.Article<br>
 			<b>Price:</b> @goods.Price.ToString("c")<br>
-			
 		</div>
 	}
 	<hr/>
