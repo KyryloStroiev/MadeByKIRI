@@ -18,8 +18,17 @@
                     <h5 class="card-title">@goods.NameGoods</h5>
                     <p class="card-text">@goods.Article</p>
                     <p class="card-text">@goods.Price.ToString("c")</p>
-                    <a class="btn btn-outline-dark" asp-controller="ShopCart" asp-action="AddToCarts"
+                    @if (goods.Available == true)
+                    {
+                        <a class="btn btn-outline-dark" asp-controller="ShopCart" asp-action="AddToCarts"
                    asp-route-goodsId="@goods.GoodsId"> Add to Cart</a>
+                    }
+                    else
+                    {
+                        <a class="btn btn-outline-dark" asp-controller="ShopCart" asp-action="AddToCarts"
+                   asp-route-goodsId="@goods.GoodsId"> Made to order</a>
+                    }
+
                 </div>
             </a>
         </div>
