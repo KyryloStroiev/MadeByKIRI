@@ -2,45 +2,39 @@
 @{
 	ViewData["Title"] = "Create Goods";
 }
+@if (User.Identity is { IsAuthenticated: true })
+{
+    <div class="col-md-6 m-auto">
 
-<div class="col-md-6 m-auto">
+        <form asp-controller="Admin" asp-action="CreateGoods">
 
-    <form asp-controller="Admin" asp-action="CreateGoods">
-      @*  <div class="mb-3">
-            <label class="form-label">Id</label>
-            <input asp-for="GoodsId" class="form-control" />
-        </div>*@
-        <div class="mb-3">
-            <label class="form-label">Назва</label>
-            <input asp-for="NameGoods" class="form-control" />
-        </div>
-        <div class="mb-3">
-            <label class="form-label">Артикул</label>
-            <input asp-for="Article" class="form-control" />
-        </div>
-        <div class="mb-3">
-            <label class="form-label">Ціна</label>
-            <input asp-for="Price" class="form-control" />
-        </div>
-        @*<div class="mb-3">
-            <label class="form-label">Наявність</label>
-            <input asp-for="Available" class="form-control" />
-        </div>*@
-        <div class="mb-3">
-            <label class="form-label">Опис</label>
-            <input asp-for="Info" class="form-control" />
-        </div>
-        @*<div class="mb-3">
-            <label class="form-label">На головну сторінку</label>
-            <input asp-for="isFavourite" class="form-control" />
-        </div>*@
-        <div class="mb-3">
-            <label for="img" class="form-label">Choose photo...</label>
-            <input class="form-control" name="img" type="file" id="img">
-        </div>
+            <div class="mb-3">
+                <label class="form-label">Назва</label>
+                <input asp-for="NameGoods" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Артикул</label>
+                <input asp-for="Article" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Ціна</label>
+                <input asp-for="Price" class="form-control" />
+            </div>
+         
+            <div class="mb-3">
+                <label class="form-label">Опис</label>
+                <input asp-for="Info" class="form-control" />
+            </div>
+         
+            <div class="mb-3">
+                <label for="img" class="form-label">Choose photo...</label>
+                <input class="form-control" name="img" type="file" id="img">
+            </div>
 
-        <button type="submit" class="btn btn-success">Edit</button>
+            <button type="submit" class="btn btn-success">Edit</button>
 
 
-    </form>
-</div>
+        </form>
+    </div>
+
+}
