@@ -2,7 +2,7 @@
 
 public class Goods : GoodsModel
 {
-	public virtual OrderDetail OrderDetail { get; set; }
+	public virtual List<OrderDetail> OrderDetail { get; set; }
 	public virtual ShopCartItem ShopCartItem { get; set; }
 
 	public Goods() { }
@@ -14,7 +14,6 @@ public class Goods : GoodsModel
         Article = goodsmodel.Article;
         Price = goodsmodel.Price;
         Available = goodsmodel.Available;
-        isFavourite = goodsmodel.isFavourite;
         Info = goodsmodel.Info;
     }
    
