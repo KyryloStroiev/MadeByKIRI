@@ -31,12 +31,18 @@
                     <td>@buyer.Phone</td>
                     <td>@buyer.Adress</td>
                     <td>
-                        <a asp-action="DeleteBuyer"
-                          asp-route-goodsid="@buyer.Id" 
-                          onclick=@($"return confirm('Ви дійсно хочете видалити{buyer.SurName}?')")>
-                            Видалити
-                        </a>
-                    
+                        	@if (User.Identity is { IsAuthenticated: true })
+						{
+                            @if (User.IsInRole("Admin"))
+                            {
+                                <a asp-action="DeleteBuyer"
+                                asp-route-goodsid="@buyer.Id"
+                              onclick=@($"return confirm('Ви дійсно хочете видалити{buyer.SurName}?')")>
+                                    Видалити
+                                </a>
+
+                            }
+                        }
                     </td>
 
                 </tr>
