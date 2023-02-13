@@ -10,7 +10,6 @@
 </a>
 
 <div class="text-center">
-
 	<table class="table">
 
 		<thead>
@@ -21,25 +20,32 @@
 				<th scope="col">Ціна</th>
 				<th scope="col">Наявність</th>
 				<th scope="col">Опис</th>
-				<th scope="col">На головну</th>
 				<th scope="col">Редагування</th>
 			</tr>
 		</thead>
 		<tbody>
-
-
-
 			@foreach (var goods in Model)
 			{
-
 				<tr>
 					<th>@goods.GoodsId</th>
 					<td>@goods.NameGoods</td>
 					<td>@goods.Article</td>
 					<td>@goods.Price</td>
-					<td>@goods.Article</td>
-					<td>@*@goods.Info*@ <button onclick="myFunction()">Опис</button></td>
-					<tb>@goods.isFavourite</tb>
+					<td>@if(goods.Available == true)
+						{
+							<div class="form-check">
+                               <input class="form-check-input" type="checkbox" value="" id="flexCheckCheckedDisabled" checked disabled>
+  
+							</div>
+						}
+						else
+						{
+							<div class="form-check">
+                             <input class="form-check-input" type="checkbox" value="" id="flexCheckDisabled" disabled>
+                            </div>
+						}
+					</td>
+					<td><a asp-action="ShowGoods"  onclick=@($"return alert('{goods.Info}')")>Опис</a></td>
 					<td>
 						<a asp-controller="admin" asp-action="EditGoods"
 					   asp-route-Id="@goods.GoodsId">
@@ -49,17 +55,21 @@
 					   asp-route-Id="@goods.GoodsId">
 							Переглянути
 						</a>
-						<a asp-action="DeleteGoods"
+						@if (User.Identity is { IsAuthenticated: true })
+						{
+							@if (User.IsInRole("Admin"))
+							{
+								<a asp-action="DeleteGoods"
 					   asp-route-goodsid="@goods.GoodsId"
 					   onclick=@($"return confirm('Ви дійсно хочете видалити{goods.NameGoods}: {goods.Article}?')")>
-							Видалити
-						</a>
-
-
+									Видалити
+								</a>
+							}
+						
+						}
 					</td>
 
 				</tr>
-
 			}
 
 		</tbody>
@@ -82,12 +92,3 @@
 		</tr>
 	</thead>
 </table>
-@foreach (var goods in Model)
-{
-	<script>
-
-		function myFunction() {
-			alert("@goods.Info")
-		}
-	</script>
-}
