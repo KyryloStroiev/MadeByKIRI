@@ -19,12 +19,12 @@
 				<div class="carousel-item" data-bs-interval="2000">
 					<img src="@($"/images/goods/{Model.GoodsId}-2.jpg")" class="d-block w-100" alt="~/images/goods/alt.jpg">
 					<div class="carousel-caption d-none d-md-block"></div>
-				</div
+				</div>
 				<div class="carousel-item">
 					<img src="@($"/images/goods/{Model.GoodsId}-3.jpg")" class="d-block w-100" alt="">
 					<div class="carousel-caption d-none d-md-block">
 					</div>
-				</div
+				</div>
 			</div>
 			<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
 				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -40,8 +40,17 @@
 		<p><h3>@Model.NameGoods</h3></p>
 		<p><h3>@Model.Article</h3></p>
 		<p><h4>Price: @Model.Price.ToString("c")</h4></p>
-	    <a class="btn btn-outline-dark" asp-controller="ShopCart" asp-action="AddToCarts"
-		                   asp-route-goodsId="@Model.GoodsId">Add to Cart</a>
+		@if (Model.Available == true)
+		{
+			<a class="btn btn-outline-dark" asp-controller="ShopCart" asp-action="AddToCarts"
+		   asp-route-goodsId="@Model.GoodsId"> Add to Cart</a>
+		}
+		else
+		{
+			<a class="btn btn-outline-dark" asp-controller="ShopCart" asp-action="AddToCarts"
+		   asp-route-goodsId="@Model.GoodsId"> Made to order</a>
+		}
+
 		<p><h6>@Model.Info</h6> </p>
 	  </div>
 
