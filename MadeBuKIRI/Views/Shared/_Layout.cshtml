@@ -16,6 +16,7 @@
 
 		</div>
 		<br />
+
 		<div class="navbar-inner">
 			<nav class="navbar h5 navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3 ">
 				<div class="container-fluid">
@@ -25,7 +26,7 @@
 						<span class="navbar-toggler-icon"></span>
 					</button>
 					<div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-						<ul class="navbar-nav flex-grow-1">
+						<div class="navbar-nav flex-grow-1">
 							<li class="nav-item">
 								<a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Home">Home</a>
 							</li>
@@ -44,19 +45,20 @@
 							<li class="nav-item">
 								<a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="SmallGoods">Small Goods</a>
 							</li>
-							<li class="nav-item">
-								<a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Contacts">Contacts</a>
-							</li>
-					
-							@if (User.Identity is { IsAuthenticated: false })
-							{
+							
+							<div class="navbar-collapse collapse d-sm-inline-flex justify-content-end">
+								<li class="nav-item">
+									<a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Contacts">Contacts</a>
+								</li>
+								@if (User.Identity is { IsAuthenticated: false })
+								{
 								<li class="nav-item">
 									<a class="nav-link text-dark" asp-controller="Admin" asp-action="Login"> LogIn</a>
 
 								</li>
-							}
-							else
-							{
+								}
+								else
+								{
 								<li class="nav-item">
 									<a class="nav-link text-dark" asp-controller="Admin" asp-action="Admin">Admin</a>
 								</li>
@@ -64,16 +66,14 @@
 								<li class="nav-item">
 									<a class="nav-link text-dark" asp-controller="Admin" asp-action="Logout"> LogOut</a>
 								</li>
-							}
-							</li>
-							<li class="nav-item">
+								}
+							    <li class="nav-item">
 								<a class="nav-link text-dark" asp-controller="ShopCart" asp-action="Index">
-									<img src="~/images/2956820.png" alt="Bootstrap" width="30" height="30"></a>
-							</li>
-							
-
-							
-						</ul>
+									<img src="~/images/2956820.png" alt="Bootstrap" width="30" height="30">
+								</a>
+							    </li>
+							</div>
+						</div>
 					</div>
 				</div>
 			</nav>
@@ -85,18 +85,29 @@
 			@RenderBody()
 		</main>
 	</div>
+	<div class="footer">
+		<footer  class="border-top footer text-muted">
+			<div class="container">
+				&copy; 2018 KIRI
+				<a class="navbar-brand" href="https://www.instagram.com/kiri__ua">
+					<img src="~/images/InstagramLogo.png" alt="Bootstrap" width="18" height="18">
+				</a>
+			</div>
+		</footer>
+	</div>
 
-	<footer class="border-top footer text-muted">
-		<div class="container">
-			&copy; 2018 KIRI
-			<a class="navbar-brand" href="https://www.instagram.com/kiri__ua">
-				<img src="~/images/InstagramLogo.png" alt="Bootstrap" width="18" height="18">
-			</a>
-		</div>
-	</footer>
 	<script src="~/lib/jquery/dist/jquery.min.js"></script>
 	<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 	<script src="~/js/site.js" asp-append-version="true"></script>
 	@await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
+<style>
+	.footer {
+		position: fixed;
+		left: 0px;
+		bottom: 0px;
+		height: 30px;
+		width: 100%;
+	}
+</style>
