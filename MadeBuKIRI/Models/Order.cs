@@ -24,6 +24,7 @@ public class Order
 	[StringLength(85, MinimumLength = 8)]
 	[Required(ErrorMessage = " Довжина не менше 8 символів ")]
 	public string Phone { get; set; }
+
 	[Display(Name = "Enter Email")]
 	[DataType(DataType.EmailAddress)]
 	[StringLength(100, MinimumLength = 5)]
