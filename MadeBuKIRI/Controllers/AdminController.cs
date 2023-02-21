@@ -7,12 +7,7 @@ public class AdminController : Controller
     private NewDbContext _dbContext;
     private readonly GoodsRepository _repository;
 
-		 public List<Login> MockUsers = new()
-	     {
-		    new Login { Id = 1, UserName = "Kyrylo", Password = "110590", Role = "Admin" },
-		    new Login { Id = 2, UserName = "User", Password = "1111", Role = "Support" }
-		     
-	     };
+		
 
 		public AdminController(ILogger<AdminController> logger, NewDbContext context, 
         GoodsRepository repository)
@@ -33,15 +28,17 @@ public class AdminController : Controller
        View(await _dbContext.OrderDetail.Include(p => p.Order).Include(p=>p.Goods).ToListAsync());
 
     [AllowAnonymous]
-    public ActionResult Login() => View();
+    public async Task<IActionResult> Login() =>
+        View(await _dbContext.Login.ToListAsync());
+
     [HttpPost]
     public async Task<IActionResult> Login(Login login)
     {
         
-        var dbUser = MockUsers
-            .FirstOrDefault(userLogin => userLogin.UserName == login.UserName &&
-                                         userLogin.Password == login.Password);
-
+        var dbUser = await _dbContext.Login
+            .FirstOrDefaultAsync(userLogin => userLogin.UserName == login.UserName &&
+            userLogin.Password == login.Password);    
+      
         if (dbUser is not null)
         {
             _logger.LogInformation($"User {dbUser.UserName} has signed in");
