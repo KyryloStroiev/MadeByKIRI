@@ -29,7 +29,11 @@
                     <td>@buyer.SurName</td>
                     <td>@buyer.Email</td>
                     <td>@buyer.Phone</td>
-                    <td>@buyer.Adress</td>
+                    <td>
+                        <a asp-action="ShowBuyer" onclick=@($"return alert('{buyer.Adress}')")>
+                            Показати
+                        </a>
+                    </td>
                     <td>
                         	@if (User.Identity is { IsAuthenticated: true })
 						{
