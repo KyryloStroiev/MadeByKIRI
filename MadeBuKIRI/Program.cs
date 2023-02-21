@@ -9,7 +9,6 @@ builder.Logging.SetMinimumLevel(LogLevel.Debug);
 builder.Services.AddControllersWithViews();
 builder.Services.AddTransient<IAllGoods, GoodsRepository>();
 builder.Services.AddTransient<IAllOrders, OrdersRepository>();
-//builder.Services.AddTransient<IGoodsCategory, CategoryRepository>();
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 builder.Services.AddScoped(sp => ShopCart.GetCart(sp));
 builder.Services.AddDbContext<NewDbContext>(options =>
