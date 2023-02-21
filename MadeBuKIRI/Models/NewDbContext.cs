@@ -8,6 +8,8 @@ public class NewDbContext : DbContext
 	public DbSet<Goods> Goods { get; set; }
 	public DbSet<OrderDetail> OrderDetail { get; set; }
 	public DbSet<Order> Order { get; set; }
+	public DbSet<Login> Login { get; set; }
+	
 
 	public NewDbContext(DbContextOptions<NewDbContext> options) : base(options) { }
 
@@ -28,7 +30,7 @@ public class NewDbContext : DbContext
 			.WithMany(order => order.OrderDetail)
 			.HasForeignKey(order => order.OrderId);
 
-
+	
 
 
 	}
